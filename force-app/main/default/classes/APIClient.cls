@@ -25,8 +25,8 @@ public with sharing class APIClient {
     String requestBody = '';
 
     Map<String, String> requestVals = new Map<String, String>();
-    requestVals.put('grant_type', 'client_credentials');
     /*As for demo directly adding client_id and client secret here */
+    requestVals.put('grant_type', 'client_credentials');
     requestVals.put('client_id', 'l76d77953a0f324fa2910834e632fb79ed');
     requestVals.put('client_secret', 'd20b9951a4b746febf1efdca4405876f');
 
