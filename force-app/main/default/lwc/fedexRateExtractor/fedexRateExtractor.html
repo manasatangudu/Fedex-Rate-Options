@@ -37,20 +37,26 @@
         ></lightning-button>
       </div>
       <div class="slds-col slds-var-p-around_medium slds-size_2-of-5">
+        <template if:true={showSpinner}>
+          <lightning-spinner
+            alternative-text="Getting Shipping Options"
+            title="Shipping Options loading"
+          ></lightning-spinner>
+        </template>
         <template if:true={uiOptions}>
           <template for:each={uiOptions} for:item="uiOption">
             <div
-              class="slds-box slds-grid slds-grid_vertical"
+              class="slds-card_boundary slds-grid slds-grid_vertical slds-var-m-bottom_small slds-var-p-around_small"
               key={uiOption.serviceType}
             >
               <div class="slds-var-p-around_xxx-small slds-text-align_left">
-                ServiceName : {uiOption.serviceName}
+                Service Name : {uiOption.serviceName}
               </div>
               <div class="slds-var-p-around_xxx-small slds-text-align_left">
-                TotalBaseCharge : {uiOption.totalBaseCharge}
+                Total Base Charge : {uiOption.totalBaseCharge}
               </div>
               <div class="slds-var-p-around_xxx-small slds-text-align_left">
-                TotalNetCharge : {uiOption.totalNetCharge}
+                Total Net Charge : {uiOption.totalNetCharge}
               </div>
             </div>
           </template>
