@@ -13,3 +13,10 @@ An app to find different shipping options based on from and to address.
 ## Instructions
 
 While entering the value in shipper address or recipient address search, select the corresponding value from the lookup and it will autofill the details.
+
+## Deploy to salesforce
+
+<a href="https://githubsfdeploy.herokuapp.com">
+  <img alt="Deploy to Salesforce"
+       src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
+</a>
