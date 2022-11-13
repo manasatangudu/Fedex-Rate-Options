@@ -7,8 +7,10 @@ export default class FedexRateExtractor extends LightningElement {
   weightValue = 0.0;
   shippingOptions = [];
   uiOptions = [];
+  showSpinner = false;
 
   getRates() {
+    this.showSpinner = true;
     this.shipper = this.template.querySelector(
       "c-address-input[data-my-id=shipper]"
     ).address;
@@ -22,6 +24,7 @@ export default class FedexRateExtractor extends LightningElement {
     })
       .then((result) => {
         if (result) {
+          this.showSpinner = false;
           this.shippingOptions = JSON.parse(result);
           this.uiOptions = this.shippingOptions.map((option) => ({
             serviceName: option.serviceName,
@@ -31,6 +34,7 @@ export default class FedexRateExtractor extends LightningElement {
         }
       })
       .catch((error) => {
+        this.showSpinner = false;
         console.log("error: ", error);
       });
   }

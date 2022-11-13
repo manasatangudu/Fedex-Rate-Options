@@ -1,19 +1,20 @@
 <template>
-        <div>
-        <lightning-input-address
-        address-label={addressLabel}
-        street-label="Street"
-        city-label="City"
-        country-label="Country"
-        country-disabled
-        province-label="Province"
-        postal-code-label="PostalCode"
-        street={address.street}
-        city={address.city}
-        country={address.countryLabel}
-        province={address.province}
-        postal-code={address.postalCode}
-        onchange={handleChange} 
-        show-address-lookup></lightning-input-address>
-        </div>
+  <div>
+    <lightning-input-address
+      address-label={addressLabel}
+      street-label="Street"
+      city-label="City"
+      country-label="Country"
+      country-disabled
+      province-label="Province"
+      postal-code-label="PostalCode"
+      street={address.street}
+      city={address.city}
+      country={address.countryLabel}
+      province={address.province}
+      postal-code={address.postalCode}
+      onchange={handleChange}
+      show-address-lookup
+    ></lightning-input-address>
+  </div>
 </template>
