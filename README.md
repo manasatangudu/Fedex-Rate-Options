@@ -4,11 +4,11 @@ An app to find different shipping options based on from and to address.
 
 ## How to use the application
 
-1.Goto Fedex Shipping app.
-2.Click on Shipping Options tab.
-3.Enter Shipper address and Recipient address.
-4.Enter Weight in Lbs.
-5.Click on Get Rates button to get service name and charges applicable.
+*1.Go to Fedex Shipping app.
+*2.Click on Shipping Options tab.
+*3.Enter Shipper address and Recipient address.
+*4.Enter Weight in Lbs.
+\*5.Click on Get Rates button to get service name and charges applicable.
 
 ## Instructions
 
