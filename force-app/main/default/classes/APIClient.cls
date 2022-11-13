@@ -13,7 +13,6 @@ public with sharing class APIClient {
     if (body != null) {
       request.setBody(body);
     }
-    system.debug('Request ' + request.getBody());
     Http http = new Http();
     HttpResponse response;
     response = http.send(request);
