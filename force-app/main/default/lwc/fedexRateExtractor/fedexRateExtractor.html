@@ -1,23 +1,61 @@
 <template>
-    <lightning-card title="Shipping Charges">
-       <h1 class="slds-wrap slds-var-p-around_xx-small">Enter Shipper Address,Recipient Address and the weight of the package and click Get Rates button to get the different shipping options.</h1>
+  <lightning-card title="Shipping Charges">
+    <h1 class="slds-wrap slds-var-p-around_xx-small">
+      For entering the Shipper Address,Recipient Address search and select in
+      the corresponding search bar to auto fill the details and enter the weight
+      of the package and click Get Rates button to get the different shipping
+      options.
+    </h1>
     <div class="slds-grid slds-wrap slds-var-p-around_xx-small">
-        <c-address-input class="slds-var-p-around_xx-small slds-size_1-of-2" data-my-id="shipper" address-label="Shipper Address"></c-address-input>
-        <c-address-input class="slds-var-p-around_xx-small slds-size_1-of-2" data-my-id="recipient" address-label="Recipient Address"></c-address-input>
-        <lightning-input class="slds-text-align_left slds-size_1-of-2" type="number" name="input7" label="Weight(in LB)" value={weightValue} step="0.01" onchange={handleWeight}></lightning-input> 
+      <c-address-input
+        class="slds-var-p-around_xx-small slds-size_1-of-2"
+        data-my-id="shipper"
+        address-label="Shipper Address"
+      ></c-address-input>
+      <c-address-input
+        class="slds-var-p-around_xx-small slds-size_1-of-2"
+        data-my-id="recipient"
+        address-label="Recipient Address"
+      ></c-address-input>
+      <lightning-input
+        class="slds-text-align_left slds-size_1-of-2"
+        type="number"
+        name="input7"
+        label="Weight(in LB)"
+        value={weightValue}
+        step="0.01"
+        onchange={handleWeight}
+      ></lightning-input>
     </div>
-    <div><lightning-button class="slds-var-p-around_xx-small slds-align_absolute-center" label="Get Rates" onclick={getRates}></lightning-button></div>
+    <div>
+      <lightning-button
+        class="slds-var-p-around_xx-small slds-align_absolute-center"
+        label="Get Rates"
+        onclick={getRates}
+      ></lightning-button>
+    </div>
     <template if:true={uiOptions}>
-        <div class="slds-var-p-around_medium">
-            <template for:each={uiOptions} for:item="uiOption">
-                    <div class="slds-box slds-grid slds-grid_vertical slds-size_1-of-2" key={uiOption.serviceType}>
-                    <div class="slds-var-p-around_xxx-small slds-text-align_left">TotalNetCharge : {uiOption.totalNetCharge}</div>
-                    <div class="slds-var-p-around_xxx-small slds-text-align_left">ServiceType : {uiOption.serviceType}</div>
-                    <div class="slds-var-p-around_xxx-small slds-text-align_left">ServiceName : {uiOption.serviceName}</div>
-                    <div class="slds-var-p-around_xxx-small slds-text-align_left">TotalBaseCharge : {uiOption.totalBaseCharge}</div>
-                    </div>
-            </template>
-        </div>
+      <div class="slds-var-p-around_medium">
+        <template for:each={uiOptions} for:item="uiOption">
+          <div
+            class="slds-box slds-grid slds-grid_vertical slds-size_1-of-2"
+            key={uiOption.serviceType}
+          >
+            <div class="slds-var-p-around_xxx-small slds-text-align_left">
+              TotalNetCharge : {uiOption.totalNetCharge}
+            </div>
+            <div class="slds-var-p-around_xxx-small slds-text-align_left">
+              ServiceType : {uiOption.serviceType}
+            </div>
+            <div class="slds-var-p-around_xxx-small slds-text-align_left">
+              ServiceName : {uiOption.serviceName}
+            </div>
+            <div class="slds-var-p-around_xxx-small slds-text-align_left">
+              TotalBaseCharge : {uiOption.totalBaseCharge}
+            </div>
+          </div>
+        </template>
+      </div>
     </template>
-</lightning-card>
+  </lightning-card>
 </template>
