@@ -24,7 +24,6 @@ export default class FedexRateExtractor extends LightningElement {
         if (result) {
           this.shippingOptions = JSON.parse(result);
           this.uiOptions = this.shippingOptions.map((option) => ({
-            serviceType: option.serviceType,
             serviceName: option.serviceName,
             totalNetCharge: option.ratedShipmentDetails[0].totalNetCharge,
             totalBaseCharge: option.ratedShipmentDetails[0].totalBaseCharge
