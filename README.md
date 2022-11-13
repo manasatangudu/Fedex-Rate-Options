@@ -1,18 +1,15 @@
-# Salesforce DX Project: Next Steps
+# Fedex Shipping Options
 
-Now that you’ve created a Salesforce DX project, what’s next? Here are some documentation resources to get you started.
+An app to find different shipping options based on from and to address.
 
-## How Do You Plan to Deploy Your Changes?
+## How to use the application
 
-Do you want to deploy a set of changes, or create a self-contained application? Choose a [development model](https://developer.salesforce.com/tools/vscode/en/user-guide/development-models).
+1.Goto Fedex Shipping app.
+2.Click on Shipping Options tab.
+3.Enter Shipper address and Recipient address.
+4.Enter Weight in Lbs.
+5.Click on Get Rates button to get service name and charges applicable.
 
-## Configure Your Salesforce DX Project
+## Instructions
 
-The `sfdx-project.json` file contains useful configuration information for your project. See [Salesforce DX Project Configuration](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_ws_config.htm) in the _Salesforce DX Developer Guide_ for details about this file.
-
-## Read All About It
-
-- [Salesforce Extensions Documentation](https://developer.salesforce.com/tools/vscode/)
-- [Salesforce CLI Setup Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_setup.meta/sfdx_setup/sfdx_setup_intro.htm)
-- [Salesforce DX Developer Guide](https://developer.salesforce.com/docs/atlas.en-us.sfdx_dev.meta/sfdx_dev/sfdx_dev_intro.htm)
-- [Salesforce CLI Command Reference](https://developer.salesforce.com/docs/atlas.en-us.sfdx_cli_reference.meta/sfdx_cli_reference/cli_reference.htm)
+While entering the value in shipper address or recipient address search, select the corresponding value from the lookup and it will autofill the details.
