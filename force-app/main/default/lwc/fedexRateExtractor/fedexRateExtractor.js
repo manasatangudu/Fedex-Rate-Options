@@ -12,17 +12,21 @@ export default class FedexRateExtractor extends LightningElement {
   showSpinner = false;
 
   getRates() {
+    this.uiOptions = [];
+    this.shipper = this.template.querySelector(
+      "c-address-input[data-my-id=shipper]"
+    ).address;
+    this.recipient = this.template.querySelector(
+      "c-address-input[data-my-id=recipient]"
+    ).address;
+    console.log("shipper " + Object.keys(this.recipient).length);
     if (
-      Object.keys(this.recipient).length !== 0 &&
-      Object.keys(this.shipper).length !== 0
+      this.recipient.postalCode !== null &&
+      this.recipient.countryCode !== null &&
+      this.shipper.postalCode !== null &&
+      this.shipper.countryCode !== null
     ) {
       this.showSpinner = true;
-      this.shipper = this.template.querySelector(
-        "c-address-input[data-my-id=shipper]"
-      ).address;
-      this.recipient = this.template.querySelector(
-        "c-address-input[data-my-id=recipient]"
-      ).address;
       getRateOptions({
         recipient: JSON.stringify(this.recipient),
         shipper: JSON.stringify(this.shipper),
