@@ -12,40 +12,52 @@ export default class FedexRateExtractor extends LightningElement {
   showSpinner = false;
 
   getRates() {
-    this.showSpinner = true;
-    this.shipper = this.template.querySelector(
-      "c-address-input[data-my-id=shipper]"
-    ).address;
-    this.recipient = this.template.querySelector(
-      "c-address-input[data-my-id=recipient]"
-    ).address;
-    getRateOptions({
-      recipient: JSON.stringify(this.recipient),
-      shipper: JSON.stringify(this.shipper),
-      weightValue: this.weightValue
-    })
-      .then((result) => {
-        if (result) {
-          this.showSpinner = false;
-          this.shippingOptions = JSON.parse(result);
-          this.uiOptions = this.shippingOptions.map((option) => ({
-            serviceName: option.serviceName,
-            totalNetCharge: option.ratedShipmentDetails[0].totalNetCharge,
-            totalBaseCharge: option.ratedShipmentDetails[0].totalBaseCharge
-          }));
-        }
+    if (
+      Object.keys(this.recipient).length !== 0 &&
+      Object.keys(this.shipper).length !== 0
+    ) {
+      this.showSpinner = true;
+      this.shipper = this.template.querySelector(
+        "c-address-input[data-my-id=shipper]"
+      ).address;
+      this.recipient = this.template.querySelector(
+        "c-address-input[data-my-id=recipient]"
+      ).address;
+      getRateOptions({
+        recipient: JSON.stringify(this.recipient),
+        shipper: JSON.stringify(this.shipper),
+        weightValue: this.weightValue
       })
-      .catch((error) => {
-        this.showSpinner = false;
-        console.log("error: ", reduceErrors(error).toString());
-        console.log("error: ", error);
-        const event = new ShowToastEvent({
-          title: "Shipping Options Error",
-          variant: "error",
-          message: reduceErrors(error).toString()
+        .then((result) => {
+          if (result) {
+            this.showSpinner = false;
+            this.shippingOptions = JSON.parse(result);
+            this.uiOptions = this.shippingOptions.map((option) => ({
+              serviceName: option.serviceName,
+              totalNetCharge: option.ratedShipmentDetails[0].totalNetCharge,
+              totalBaseCharge: option.ratedShipmentDetails[0].totalBaseCharge
+            }));
+          }
+        })
+        .catch((error) => {
+          this.showSpinner = false;
+          console.log("error: ", reduceErrors(error).toString());
+          console.log("error: ", error);
+          const event = new ShowToastEvent({
+            title: "Shipping Options Error",
+            variant: "error",
+            message: reduceErrors(error).toString()
+          });
+          this.dispatchEvent(event);
         });
-        this.dispatchEvent(event);
+    } else {
+      const event = new ShowToastEvent({
+        title: "Shipping Options Error",
+        variant: "error",
+        message: "Please enter Shipper and recipient address"
       });
+      this.dispatchEvent(event);
+    }
   }
   handleWeight(event) {
     this.weightValue = event.detail.value;

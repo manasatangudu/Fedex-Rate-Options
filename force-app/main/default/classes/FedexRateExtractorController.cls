@@ -37,6 +37,7 @@ public with sharing class FedexRateExtractorController {
         }
         throw new RateOptionsException(rateResMsg.StatusCode + ':' + errorMsg);
       }
+      rateOptions = rateResMsg.output.rateReplyDetails;
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
