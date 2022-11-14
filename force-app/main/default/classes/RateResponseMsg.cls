@@ -1,6 +1,13 @@
 public class RateResponseMsg {
   public String transactionId;
   public OutputMsg output;
+  public List<ErrorMsg> errors;
+  public Integer StatusCode;
+
+  public class ErrorMsg {
+    @AuraEnabled
+    public String message;
+  }
 
   public class OutputMsg {
     public List<RateReplyDetailsMsg> rateReplyDetails;

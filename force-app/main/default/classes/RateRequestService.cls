@@ -1,5 +1,5 @@
 public with sharing class RateRequestService {
-  public static List<RateResponseMsg.RateReplyDetailsMsg> getRateOptions(
+  public static RateResponseMsg getRateOptions(
     RateRequestMsg.RecipientMsg recipient,
     RateRequestMsg.ShipperMsg shipper,
     RateRequestMsg.WeightMsg weightMsg
@@ -18,8 +18,9 @@ public with sharing class RateRequestService {
       rateOptionsResponse.getBody(),
       RateResponseMsg.class
     );
+    responseMsg.StatusCode = rateOptionsResponse.getStatusCode();
     system.debug('rate response ::' + responseMsg);
-    return responseMsg.output.rateReplyDetails;
+    return responseMsg;
   }
 
   public static RateRequestMsg buildRequestBody(

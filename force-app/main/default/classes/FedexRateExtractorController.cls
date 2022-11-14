@@ -24,14 +24,24 @@ public with sharing class FedexRateExtractorController {
       RateRequestMsg.WeightMsg rateWeightMsg = new RateRequestMsg.WeightMsg();
       rateWeightMsg.units = 'LB';
       rateWeightMsg.value = weightValue;
-      rateOptions = RateRequestService.getRateOptions(
+      RateResponseMsg rateResMsg = RateRequestService.getRateOptions(
         requestRecipientMsg,
         requestShipMsg,
         rateWeightMsg
       );
+      if (rateResMsg.StatusCode != 200) {
+        String errorMsg = '';
+        for (Integer i = 0; i < rateResMsg.errors.size(); i++) {
+          system.debug(rateResMsg.errors[i].message);
+          errorMsg = errorMsg + rateResMsg.errors[i].message;
+        }
+        throw new RateOptionsException(rateResMsg.StatusCode + ':' + errorMsg);
+      }
     } catch (Exception e) {
       throw new AuraHandledException(e.getMessage());
     }
     return JSON.serialize(rateOptions);
+  }
+  public class RateOptionsException extends Exception {
   }
 }
